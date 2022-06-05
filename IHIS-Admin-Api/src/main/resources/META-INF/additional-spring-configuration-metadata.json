@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "management.endpoints.web.exposure.include",
+    "type": "java.lang.String",
+    "description": "A description for 'management.endpoints.web.exposure.include'"
+  },
+  {
+    "name": "management.endpoint.health.show-details",
+    "type": "java.lang.String",
+    "description": "A description for 'management.endpoint.health.show-details'"
+  },
+  {
+    "name": "temporaryPasswordTemplate",
+    "type": "java.lang.String",
+    "description": "A description for 'temporaryPasswordTemplate'"
+  }
+]}
