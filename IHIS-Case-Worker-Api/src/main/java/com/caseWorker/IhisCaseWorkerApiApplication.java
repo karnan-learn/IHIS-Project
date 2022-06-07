@@ -1,4 +1,4 @@
-package com.admin.api;
+package com.caseWorker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaRepositories("com.ihis.repository")
 @EntityScan(basePackages = {"com.ihis.entity","com.ihis.util"})
-public class IhisAdminApiApplication {
+public class IhisCaseWorkerApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(IhisAdminApiApplication.class, args);
+		SpringApplication.run(IhisCaseWorkerApiApplication.class, args);
 	}
 
 }

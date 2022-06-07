@@ -13,6 +13,6 @@ public interface PlanEntityService {
 	public List<AppPlanEntity> getAllPlans();
 	public AppPlanEntity getPlan(int planId);
 	public String deletePlan(int planId);
-	public String PlanActiveOrDeactive(int planId);
+	public String PlanActiveSw(int planId);
 	
 }

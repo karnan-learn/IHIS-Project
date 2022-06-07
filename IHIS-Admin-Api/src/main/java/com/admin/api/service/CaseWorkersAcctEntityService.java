@@ -14,5 +14,5 @@ public interface CaseWorkersAcctEntityService {
 	public List<CaseWorkersAcctEntity> getAllCaseWorkers();
 	public CaseWorkersAcctEntity getGetCaseWorker(int cwAcctId);
 	public String deleteCaseWorker(int cwAcctId);
-	public String CaseWorkerActiveOrDeactive(int cwAcctId);
+	public String CaseWorkerActiveSw(int cwAcctId);
 }

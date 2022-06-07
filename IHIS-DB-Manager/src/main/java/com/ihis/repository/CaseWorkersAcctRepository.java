@@ -19,6 +19,4 @@ public interface CaseWorkersAcctRepository extends JpaRepository<CaseWorkersAcct
 
 	public CaseWorkersAcctEntity findByEmail(String email);
 	public Optional<CaseWorkersAcctEntity> findByAcctId(int acctId);
-	
-	
 }

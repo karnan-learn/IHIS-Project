@@ -1,4 +1,4 @@
-package com.admin.api.utils;
+package com.ihis.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

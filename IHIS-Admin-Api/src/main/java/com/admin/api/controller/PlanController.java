@@ -50,8 +50,8 @@ public class PlanController {
 	}
 	
 	@DeleteMapping("/plan/enable/{planId}")
-	public ResponseEntity<String> PlanActiveOrDeactive(@PathVariable int planId){
-		String status = service.PlanActiveOrDeactive(planId);
+	public ResponseEntity<String> PlanActiveSw(@PathVariable int planId){
+		String status = service.PlanActiveSw(planId);
 		return ResponseEntity.ok().body(status);
 	}
 }

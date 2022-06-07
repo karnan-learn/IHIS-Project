@@ -1,9 +1,10 @@
 package com.admin.api.service;
 
-import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -11,10 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.admin.api.binding.CaseWorkerAccountRegForm;
 import com.admin.api.utils.PasswordUtils;
-import com.admin.api.utils.ReadMailBody;
-import com.admin.api.utils.SendEmail;
 import com.ihis.entity.CaseWorkersAcctEntity;
 import com.ihis.repository.CaseWorkersAcctRepository;
+import com.ihis.util.ReadMailBody;
+import com.ihis.util.SendEmail;
 
 @Service
 public class CaseWorkersAcctEntityServiceImpl implements CaseWorkersAcctEntityService {
@@ -36,13 +37,7 @@ public class CaseWorkersAcctEntityServiceImpl implements CaseWorkersAcctEntitySe
 		CaseWorkersAcctEntity cwEntity = new CaseWorkersAcctEntity();
 		if(isEmailNotExist(cw.getEmail())) {
 			
-			cwEntity.setFullName(cw.getFullName());
-			cwEntity.setEmail(cw.getEmail());
-			cwEntity.setMobileNum(cw.getMobileNum());
-			cwEntity.setGender(cw.getGender());
-			cwEntity.setDob(cw.getDob());
-			cwEntity.setSsn(cw.getSsn());
-			cwEntity.setCreatedDate(LocalDate.now());
+			BeanUtils.copyProperties(cw,cwEntity);
 			cwEntity.setActiveSw('Y');
 			cwEntity.setPwd(PasswordUtils.generateRandomPassword(12));
 			CaseWorkersAcctEntity savedCW = cwrepo.save(cwEntity);
@@ -99,7 +94,7 @@ public class CaseWorkersAcctEntityServiceImpl implements CaseWorkersAcctEntitySe
 	}
 
 	@Override
-	public String CaseWorkerActiveOrDeactive(int cwAcctId) {
+	public String CaseWorkerActiveSw(int cwAcctId) {
 		Optional<CaseWorkersAcctEntity> findById = cwrepo.findByAcctId(cwAcctId);
 		CaseWorkersAcctEntity plan = findById.get();
 		if (findById.isPresent() && findById.get().getActiveSw()=='Y') {
@@ -112,6 +107,4 @@ public class CaseWorkersAcctEntityServiceImpl implements CaseWorkersAcctEntitySe
 			return "Active Switch Enabled";
 		}
 	}
-
-
 }

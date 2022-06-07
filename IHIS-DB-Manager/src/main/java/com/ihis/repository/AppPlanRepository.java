@@ -17,5 +17,9 @@ public interface AppPlanRepository extends JpaRepository<AppPlanEntity, Integer>
 //
 //    @Query("select plan from AppPlanEntity plan where plan.planId = :planId and plan.activeSw = :active")
 //    public AppPlanEntity findByPlanIdAndactivePlan(@Param("planId") int planId, @Param("active") char active);
-	public AppPlanEntity findByPlanId(int planId);
+	
+	  public AppPlanEntity findByPlanId(int planId);
+	  
+	  @Query("select count(plan) from AppPlanEntity plan")
+	  public long getTotalPlans();
 }

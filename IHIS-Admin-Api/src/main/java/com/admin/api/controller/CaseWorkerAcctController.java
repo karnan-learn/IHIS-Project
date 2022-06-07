@@ -19,6 +19,7 @@ import com.admin.api.binding.CaseWorkerAccountRegForm;
 import com.admin.api.service.CaseWorkersAcctEntityService;
 import com.ihis.entity.CaseWorkersAcctEntity;
 
+
 @RestController
 @RequestMapping("/")
 public class CaseWorkerAcctController {
@@ -60,8 +61,8 @@ public class CaseWorkerAcctController {
 	}
 	
 	@DeleteMapping("/case-worker/enable/{cwAcctId}")
-	public ResponseEntity<String> CaseWorkerActiveOrDeactive(@PathVariable("cwAcctId") int cwAcctId){
-		String status = cwService.CaseWorkerActiveOrDeactive(cwAcctId);
+	public ResponseEntity<String> CaseWorkerActiveSw(@PathVariable("cwAcctId") int cwAcctId){
+		String status = cwService.CaseWorkerActiveSw(cwAcctId);
 		return ResponseEntity.ok().body(status);
 	}
 }

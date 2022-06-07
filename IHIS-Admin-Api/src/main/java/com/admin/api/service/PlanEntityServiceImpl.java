@@ -60,7 +60,7 @@ public class PlanEntityServiceImpl implements PlanEntityService{
 	}
 
 	@Override
-	public String PlanActiveOrDeactive(int planId) {
+	public String PlanActiveSw(int planId) {
 		
 		Optional<AppPlanEntity> findById = repo.findById(planId);
 		AppPlanEntity plan = findById.get();

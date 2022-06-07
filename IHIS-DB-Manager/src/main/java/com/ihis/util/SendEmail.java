@@ -1,4 +1,4 @@
-package com.admin.api.utils;
+package com.ihis.util;
 
 
 import javax.mail.internet.MimeMessage;
