@@ -37,13 +37,13 @@ public class ApplicationRegistrationServiceImple implements ApplicationRegistrat
 		RestTemplate rt = new RestTemplate();
 		ResponseEntity<String> stateName=rt.getForEntity(url, String.class);
 
-		if(stateName.getBody() != "Invalid SSN") {
+		if("Invalid SSN".equals(stateName.getBody())) {
+			response="Invalid SSN";
+		}else {
 			ctAppEntity.setStateName(stateName.getBody());
 			ctAppEntity.setActiveSw('Y');
 			citizenAppsRepository.save(ctAppEntity);
 			response="Citizens Application Saved Sucessfully";
-		}else {
-			response="Invalid SSN";
 		}
 		
 		return response;
@@ -58,8 +58,8 @@ public class ApplicationRegistrationServiceImple implements ApplicationRegistrat
 		if(citizenApplications == null) {
 			applicationDtls= null;
 		}else {
+			ApplicationProfile profile = new ApplicationProfile();
 			for(CitizenAppsEntity ctApp : citizenApplications) {
-				ApplicationProfile profile = new ApplicationProfile();
 				BeanUtils.copyProperties(ctApp,profile);
 				applicationDtls.add(profile);
 			}
