@@ -38,3 +38,14 @@ Insert Into CW_ACCOUNTS (
     ACCT_ID,FULLNAME,EMAIL,PWD,MOBILE_NUM,GENDER,DOB,SSN,ACTIVE_SW) values(
     1,'karnan Sooriyakumar','karnan.learning.ashokit@gmail.com',1234,0771027990,'M','2021-05-21',123456789,'Y');
     
+ 
+
+    
+Insert into CITIZEN_APPS(
+CASE_NUM,FULLNAME,EMAIL,MOBILE_NUM,GENDER,DOB,SSN,STATE_NAME,ACTIVE_SW
+) values(
+1,'Ashok Kumar','ashok@gmail.com',0767039639,'M','2021-09-20',65892356,'New Jersey','Y'
+);
+    
+
+    

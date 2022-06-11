@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.ihis.entity.CorrespondenceTriggersEntity;
 
 @Repository
-public interface CoTriggersRepository extends JpaRepository<CorrespondenceTriggersEntity, Id> {
+public interface CoTriggersRepository extends JpaRepository<CorrespondenceTriggersEntity, Integer> {
 
 }

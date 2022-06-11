@@ -1,11 +1,11 @@
-package com.caseWorker.binding;
+package com.ar.api.binding;
 
 import java.time.LocalDate;
 
 import lombok.Data;
-@Data
-public class CaseWorkerAccountDtls {
 
+@Data
+public class ApplicationForm {
 	private String fullName;
 	private String email;
 	private long mobileNum;

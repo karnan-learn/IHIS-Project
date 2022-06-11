@@ -6,27 +6,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.caseWorker.binding.CaseWorkerAccountDtls;
+import com.caseWorker.binding.Card;
 import com.caseWorker.binding.LoginForm;
-import com.caseWorker.service.CaseWorkerMgmt;
+import com.caseWorker.binding.Profile;
+import com.caseWorker.exception.CaseWorkerNotFoundException;
+import com.caseWorker.service.CaseWorkerService;
 
 @RestController
 @RequestMapping("/")
 public class CaseWorkerController {
 	
 	@Autowired
-	private CaseWorkerMgmt caService;
+	private CaseWorkerService caService;
 	
 	@PostMapping("signin")
 	public ResponseEntity<String> signIn(@RequestBody LoginForm loginForm){
-		String status = caService.signIn(loginForm);
-		return new ResponseEntity<String>(status,HttpStatus.OK);
+//		String status = caService.signIn(loginForm);
+//		return new ResponseEntity<String>(status,HttpStatus.OK);
+		ResponseEntity<String> response = null;
+		try {
+			String status = caService.signIn(loginForm);
+			response = new ResponseEntity<String>(status,HttpStatus.OK);
+		}catch(CaseWorkerNotFoundException e){
+			e.printStackTrace();
+			throw e;
+		}
+		return response;
 	}
 	
 	@GetMapping("forget-password")
@@ -35,29 +45,20 @@ public class CaseWorkerController {
 		return new ResponseEntity<String>(status,HttpStatus.OK);
 	}
 	
-	@PostMapping("update-profile/{cwAcctId}")
-	public ResponseEntity<String> updateProfile(@PathVariable(value = "cwAcctId") int cwAcctId, @RequestBody CaseWorkerAccountDtls cwAcctDtls){
-		String status = caService.updateProfile(cwAcctId,cwAcctDtls);
+	@GetMapping("get-case-worker-profile")
+	public ResponseEntity<Profile> fetchCaseWorkerProfileInfo(@PathParam(value = "email") String email){
+		Profile profile = caService.fetchCaseWorkerProfileInfo(email);
+		return new ResponseEntity<Profile>(profile,HttpStatus.OK);
+	}
+	
+	@PostMapping("update-profile")
+	public ResponseEntity<String> updateCaseWorkerProfile( @RequestBody Profile cwAcctDtls){
+		String status = caService.updateCaseWorkerProfile(cwAcctDtls);
 		return new ResponseEntity<String>(status,HttpStatus.OK);
 	}
 	
-	@GetMapping("get-total-plans")
-	public ResponseEntity<Long> getTotalPlans(){
-		return new ResponseEntity<Long>(caService.getTotalPlans(),HttpStatus.OK);
-	}
-	
-	@GetMapping("get-total-applications")
-	public ResponseEntity<Long> getTotalApplications(){
-		return new ResponseEntity<Long>(caService.getTotalApplications(),HttpStatus.OK);
-	}
-	
-	@GetMapping("get-total-approved-citizen-counts")
-	public ResponseEntity<Long> getApprovedCitizensCount(){
-		return new ResponseEntity<Long>(caService.getApprovedCitizensCount(),HttpStatus.OK);
-	}
-	
-	@GetMapping("get-total-denied-citizen-counts")
-	public ResponseEntity<Long> getDeniedCitizensCount(){
-		return new ResponseEntity<Long>(caService.getDeniedCitizensCount(),HttpStatus.OK);
+	@GetMapping("get-dashboard-card-data")
+	public ResponseEntity<Card> fetchDashboardCardData(){
+		return new ResponseEntity<Card>(caService.fetchDashboardCardData(),HttpStatus.OK);
 	}
 }

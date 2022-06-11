@@ -20,6 +20,6 @@ public interface AppPlanRepository extends JpaRepository<AppPlanEntity, Integer>
 	
 	  public AppPlanEntity findByPlanId(int planId);
 	  
-	  @Query("select count(plan) from AppPlanEntity plan")
-	  public long getTotalPlans();
+//	  @Query("select count(plan) from AppPlanEntity plan")
+//	  public long getTotalPlans();
 }

@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.ihis.entity.CitizenGraduationDtlsEntity;
 
 @Repository
-public interface CitizenGraduationDtlsRepository extends JpaRepository<CitizenGraduationDtlsEntity, Id> {
+public interface CitizenGraduationDtlsRepository extends JpaRepository<CitizenGraduationDtlsEntity, Integer> {
 
 }

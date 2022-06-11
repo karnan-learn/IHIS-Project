@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.ihis.entity.EligibilityDtlsEntity;
 
 @Repository
-public interface EligibilityDtlsRepository extends JpaRepository<EligibilityDtlsEntity, Id> {
+public interface EligibilityDtlsRepository extends JpaRepository<EligibilityDtlsEntity, Integer> {
 
 	@Query("select count(eligibilityDtls) from EligibilityDtlsEntity eligibilityDtls where eligibilityDtls.planStatus = :planStatus")
 	public long getCitizensCountByPlanStatus(@Param("planStatus") String planStatus);

@@ -31,14 +31,11 @@ public class CitizenAppsEntity {
 	@Column(name="EMAIL")
 	private String email;
 	
-	@Column(name="PWD")
-	private String pwd;
-	
 	@Column(name="MOBILE_NUM")
 	private long mobileNum;
 	
 	@Column(name="GENDER")
-	private String gender;
+	private char gender;
 	
 	@Column(name="DOB")
 	private LocalDate dob;
@@ -47,7 +44,7 @@ public class CitizenAppsEntity {
 	private long ssn;
 	
 	@Column(name="STATE_NAME")
-	private long stateName;
+	private String stateName;
 	
 	@Column(name="ACTIVE_SW")
 	private Character activeSw;

@@ -15,8 +15,8 @@ import com.ihis.entity.CaseWorkersAcctEntity;
 
 
 @Repository
-public interface CaseWorkersAcctRepository extends JpaRepository<CaseWorkersAcctEntity, Id> {
+public interface CaseWorkersAcctRepository extends JpaRepository<CaseWorkersAcctEntity, Integer> {
 
+	public CaseWorkersAcctEntity findByEmailAndPwd(String email,String pazzwd);
 	public CaseWorkersAcctEntity findByEmail(String email);
-	public Optional<CaseWorkersAcctEntity> findByAcctId(int acctId);
 }

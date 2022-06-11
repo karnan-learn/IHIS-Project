@@ -77,10 +77,10 @@ public class CaseWorkersAcctEntityServiceImpl implements CaseWorkersAcctEntitySe
 	}
 
 	@Override
-	public CaseWorkersAcctEntity getGetCaseWorker(int cwAcctId) {
-		Optional<CaseWorkersAcctEntity> cw = cwrepo.findByAcctId(cwAcctId);
-		if(cw.isPresent()) {
-			return cw.get();
+	public CaseWorkersAcctEntity getCaseWorker(String email) {
+		CaseWorkersAcctEntity cw = cwrepo.findByEmail(email);
+		if(cw != null) {
+			return cw;
 		}else {
 			return null;
 		}
@@ -88,22 +88,20 @@ public class CaseWorkersAcctEntityServiceImpl implements CaseWorkersAcctEntitySe
 
 	@Override
 	public String deleteCaseWorker(int cwAcctId) {
-		Optional<CaseWorkersAcctEntity> findById = cwrepo.findByAcctId(cwAcctId);
-		cwrepo.delete(findById.get());
+		cwrepo.deleteById(cwAcctId);
 		return "Deleted Sucess";
 	}
 
 	@Override
 	public String CaseWorkerActiveSw(int cwAcctId) {
-		Optional<CaseWorkersAcctEntity> findById = cwrepo.findByAcctId(cwAcctId);
-		CaseWorkersAcctEntity plan = findById.get();
+		Optional<CaseWorkersAcctEntity> findById = cwrepo.findById(cwAcctId);
 		if (findById.isPresent() && findById.get().getActiveSw()=='Y') {
-			plan.setActiveSw('N');
-			cwrepo.save(plan);
+			findById.get().setActiveSw('N');
+			cwrepo.save(findById.get());
 			return "Active Switch Disabled";
 		}else {
-			plan.setActiveSw('Y');
-			cwrepo.save(plan);
+			findById.get().setActiveSw('Y');
+			cwrepo.save(findById.get());
 			return "Active Switch Enabled";
 		}
 	}

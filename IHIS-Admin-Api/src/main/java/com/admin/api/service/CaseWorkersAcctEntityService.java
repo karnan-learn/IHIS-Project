@@ -12,7 +12,7 @@ public interface CaseWorkersAcctEntityService {
 	public boolean isEmailNotExist(String email);
 	
 	public List<CaseWorkersAcctEntity> getAllCaseWorkers();
-	public CaseWorkersAcctEntity getGetCaseWorker(int cwAcctId);
+	public CaseWorkersAcctEntity getCaseWorker(String email);
 	public String deleteCaseWorker(int cwAcctId);
 	public String CaseWorkerActiveSw(int cwAcctId);
 }

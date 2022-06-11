@@ -48,9 +48,9 @@ public class CaseWorkerAcctController {
 		return ResponseEntity.ok().body(cws);
 	}
 	
-	@GetMapping("get-case-worker/{cwAcctId}")
-	public ResponseEntity<CaseWorkersAcctEntity> getCaseWorker(@PathVariable("cwAcctId") int cwAcctId ){
-		CaseWorkersAcctEntity cw = cwService.getGetCaseWorker(cwAcctId);
+	@GetMapping("get-case-worker")
+	public ResponseEntity<CaseWorkersAcctEntity> getCaseWorker(@PathParam(value = "email") String email ){
+		CaseWorkersAcctEntity cw = cwService.getCaseWorker(email);
 		return ResponseEntity.ok().body(cw);
 	}
 	
@@ -60,7 +60,7 @@ public class CaseWorkerAcctController {
 		return ResponseEntity.ok().body(status);
 	}
 	
-	@DeleteMapping("/case-worker/enable/{cwAcctId}")
+	@DeleteMapping("/case-worker/active-sw/{cwAcctId}")
 	public ResponseEntity<String> CaseWorkerActiveSw(@PathVariable("cwAcctId") int cwAcctId){
 		String status = cwService.CaseWorkerActiveSw(cwAcctId);
 		return ResponseEntity.ok().body(status);
