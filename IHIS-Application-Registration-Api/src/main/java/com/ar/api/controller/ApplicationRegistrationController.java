@@ -29,6 +29,6 @@ public class ApplicationRegistrationController {
 	
 	@GetMapping("get-all-applications")
 	public ResponseEntity<List<ApplicationProfile>> getAllApplications(){
-		return new ResponseEntity<>(ars.getApplicationDtls(),HttpStatus.OK);
+		return new ResponseEntity<>(ars.viewApplications(),HttpStatus.OK);
 	}
 }

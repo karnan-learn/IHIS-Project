@@ -12,7 +12,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.ar.api.binding.ApplicationForm;
 import com.ar.api.binding.ApplicationProfile;
-import com.ar.api.consumer.SsawebApiConsumer;
 import com.ihis.entity.CitizenAppsEntity;
 import com.ihis.repository.CitizenAppsRepository;
 
@@ -25,32 +24,30 @@ public class ApplicationRegistrationServiceImple implements ApplicationRegistrat
 	@Value(value="${sshWebServiceApi}")
 	private String sshWebServiceApi;
 	
+	@Value(value="${stateOfCitizen}")
+	private String stateOfCitizen;
+	
 	@Override
 	public String upsert(ApplicationForm applicationForm) {
-		
-		String response=null;
 		
 		CitizenAppsEntity ctAppEntity = new CitizenAppsEntity();
 		BeanUtils.copyProperties(applicationForm,ctAppEntity);
 		
-		String url = sshWebServiceApi.toString() + "ssn/" + ctAppEntity.getSsn();
+		String stateNameGettingUrl = sshWebServiceApi.toString();
 		RestTemplate rt = new RestTemplate();
-		ResponseEntity<String> stateName=rt.getForEntity(url, String.class);
+		ResponseEntity<String> stateName=rt.getForEntity(stateNameGettingUrl, String.class,ctAppEntity.getSsn());
 
-		if("Invalid SSN".equals(stateName.getBody())) {
-			response="Invalid SSN";
-		}else {
+		if(stateOfCitizen.equals(stateName.getBody())) {
 			ctAppEntity.setStateName(stateName.getBody());
 			ctAppEntity.setActiveSw('Y');
 			citizenAppsRepository.save(ctAppEntity);
-			response="Citizens Application Saved Sucessfully";
+			return "Citizens Application Saved Sucessfully";
 		}
-		
-		return response;
+		return "Citizen Not Belogs to New Jersy";
 	}
 
 	@Override
-	public List<ApplicationProfile> getApplicationDtls() {
+	public List<ApplicationProfile> viewApplications() {
 		
 		List<CitizenAppsEntity> citizenApplications = citizenAppsRepository.findAll();
 		List<ApplicationProfile> applicationDtls = new ArrayList<>();

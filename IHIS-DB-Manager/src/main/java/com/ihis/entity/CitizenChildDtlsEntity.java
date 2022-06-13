@@ -23,10 +23,10 @@ public class CitizenChildDtlsEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="CHILD_ID")
-	private int childId;
+	private Integer childId;
 	
 	@Column(name="CASE_NUM")
-	private int caseNum;
+	private Integer caseNum;
 	
 	@Column(name="CHILD_NAME")
 	private String childName;

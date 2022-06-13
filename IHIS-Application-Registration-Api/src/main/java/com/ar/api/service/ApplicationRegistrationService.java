@@ -8,6 +8,6 @@ import com.ar.api.binding.ApplicationProfile;
 public interface ApplicationRegistrationService {
 
 	public String upsert(ApplicationForm applicationForm);
-	public List<ApplicationProfile> getApplicationDtls();
+	public List<ApplicationProfile> viewApplications();
 	
 }

@@ -1,15 +1,5 @@
 {"properties": [
   {
-    "name": "sshWebServiceApi",
-    "type": "java.lang.String",
-    "description": "A description for 'sshWebServiceApi'"
-  },
-  {
-    "name": "stateOfCitizen",
-    "type": "java.lang.String",
-    "description": "A description for 'stateOfCitizen'"
-  },
-  {
     "name": "management.endpoints.web.exposure.include",
     "type": "java.lang.String",
     "description": "A description for 'management.endpoints.web.exposure.include'"

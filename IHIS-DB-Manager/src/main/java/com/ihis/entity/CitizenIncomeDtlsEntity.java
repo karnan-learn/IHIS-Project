@@ -22,10 +22,10 @@ public class CitizenIncomeDtlsEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="INCOME_ID")
-	private int incomeId;
+	private Integer incomeId;
 	
 	@Column(name="CASE_NUM")
-	private int caseNum;
+	private Integer caseNum;
 	
 	@Column(name="SALARY_INCOME")
 	private double salaryIncome;

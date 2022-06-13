@@ -24,13 +24,13 @@ public class CitizenPlansEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="CITIZEN_ID")
-	private int citizenId;
+	private Integer citizenId;
 	
 	@Column(name="CASE_NUM")
-	private int caseNum;
+	private Integer caseNum;
 	
 	@Column(name="PLAN_ID")
-	private int planId;
+	private Integer planId;
 	
 	@Column(name="CREATED_DATE")
 	private LocalDate createdDate;
