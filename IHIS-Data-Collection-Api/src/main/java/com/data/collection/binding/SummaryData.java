@@ -5,7 +5,9 @@ import java.util.List;
 import lombok.Data;
 @Data
 public class SummaryData{
+	
+	private CitizenPlanDtls planDtls;
 	private CitizenIncomeDtls incomeDtls;
-	private List<CitizenGraduationDtls> eduDtls;
-	private List<CitizenChildDtls> kidDtls;
+	private CitizenGraduationDtls graduationDtls;
+	private CitizenChildDtls childDtls;
 }

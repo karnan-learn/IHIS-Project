@@ -22,28 +22,28 @@ import com.data.collection.service.DataCollectionService;
 public class DataCollectionController {
 	@Autowired
 	private DataCollectionService dcService;
-	
+	// 5 controller vara venum
 	@PostMapping("create-plan")
 	public ResponseEntity<String> createPlan(@RequestBody CitizenPlanDtls citizenPlanDtls){
-		String status = dcService.createCitizenPlan(citizenPlanDtls);
+		String status = dcService.savePlanSelection(citizenPlanDtls);
 		return new ResponseEntity<>(status,HttpStatus.CREATED);
 	}
 	
 	@PostMapping("create-income-detail")
 	public ResponseEntity<String> createIncomeDtls(@RequestBody CitizenIncomeDtls citizenIncomeDtls){
-		String status = dcService.createCitizenIncomeDtls(citizenIncomeDtls);
+		String status = dcService.saveCitizenIncomeDtls(citizenIncomeDtls);
 		return new ResponseEntity<>(status,HttpStatus.CREATED);
 	}
 	
 	@PostMapping("create-graduation-detail")
 	public ResponseEntity<String> createGraduationDtls(@RequestBody CitizenGraduationDtls citizenGraduationDtls){
-		String status = dcService.createCitizenGraduationDtls(citizenGraduationDtls);
+		String status = dcService.saveCitizenGraduationDtls(citizenGraduationDtls);
 		return new ResponseEntity<>(status,HttpStatus.CREATED);
 	}
 	
 	@PostMapping("create-child-details")
 	public ResponseEntity<String> createChildDtls(@RequestBody CitizenChildDtls citizenChildDtls){
-		String status = dcService.createCitizenChildsDtls(citizenChildDtls);
+		String status = dcService.saveCitizenChildsDtls(citizenChildDtls);
 		return new ResponseEntity<>(status,HttpStatus.CREATED);
 	}
 	

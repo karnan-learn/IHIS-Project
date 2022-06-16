@@ -10,4 +10,5 @@ import com.ihis.entity.CitizenIncomeDtlsEntity;
 @Repository
 public interface CitizenIncomeDtlsRepository extends JpaRepository<CitizenIncomeDtlsEntity, Integer> {
 
+	public CitizenIncomeDtlsEntity findByCaseNum(Integer caseNum);
 }

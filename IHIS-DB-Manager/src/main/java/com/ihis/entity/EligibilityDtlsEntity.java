@@ -29,7 +29,7 @@ public class EligibilityDtlsEntity {
 	private int caseNum;
 	
 	@Column(name="PLAN_NAME")
-	private int planName;
+	private String planName;
 	
 	@Column(name="PLAN_STATUS")
 	private String planStatus;

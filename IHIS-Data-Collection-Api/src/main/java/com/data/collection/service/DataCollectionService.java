@@ -11,15 +11,19 @@ import com.data.collection.binding.SummaryData;
 
 public interface DataCollectionService {
 	//Plan
-	public Map<Integer, String> getAllPlan();
-	public String createCitizenPlan(CitizenPlanDtls planDtls);
+	public Map<Integer, String> getAllPlanNames();
+	public String savePlanSelection(CitizenPlanDtls planDtls);
+	
 	//Income Details
-	public String createCitizenIncomeDtls(CitizenIncomeDtls incomeDtls);
+	public String saveCitizenIncomeDtls(CitizenIncomeDtls incomeDtls);
+	
 	//Graduation
 	public List<Integer> getAllGraduationYear();
-	public String createCitizenGraduationDtls(CitizenGraduationDtls graduationDtls);
+	public String saveCitizenGraduationDtls(CitizenGraduationDtls graduationDtls);
+	
 	//Citizen
-	public String createCitizenChildsDtls(CitizenChildDtls childDtls);
+	public String saveCitizenChildsDtls(CitizenChildDtls childDtls);
+	
 	//Summary
 	public SummaryData getSummaryData(Integer CaseNumber);
 }

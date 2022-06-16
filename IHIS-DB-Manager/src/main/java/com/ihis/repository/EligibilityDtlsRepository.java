@@ -1,6 +1,6 @@
 package com.ihis.repository;
 
-import javax.persistence.Id;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,4 +15,5 @@ public interface EligibilityDtlsRepository extends JpaRepository<EligibilityDtls
 	@Query("select count(eligibilityDtls) from EligibilityDtlsEntity eligibilityDtls where eligibilityDtls.planStatus = :planStatus")
 	public long getCitizensCountByPlanStatus(@Param("planStatus") String planStatus);
 	
+	public List<EligibilityDtlsEntity> findByCaseNum(Integer caseNum);
 }

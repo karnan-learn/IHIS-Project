@@ -10,4 +10,5 @@ import com.ihis.entity.CitizenPlansEntity;
 @Repository
 public interface CitizenPlansRepository extends JpaRepository<CitizenPlansEntity, Integer> {
 
+	public CitizenPlansEntity findByCaseNum(Integer caseNum);
 }
